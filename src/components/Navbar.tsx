@@ -39,10 +39,10 @@ function Content() {
   return (
     <>
       <li>
-        <Link href={"/search"}>Search</Link>
+        <Link href="/search">Search</Link>
       </li>
       <li>
-        <Link href={"/my-posts"}>My Posts</Link>
+        <Link href="/my-posts">My Posts</Link>
       </li>
     </>
   );
@@ -76,7 +76,7 @@ export function NavbarComponent() {
             <Content />
           </ul>
         </div>
-        <Link href={"/"} className="btn btn-ghost text-xl">
+        <Link href="/" className="btn btn-ghost text-xl">
           Script Savvy
         </Link>
       </div>
