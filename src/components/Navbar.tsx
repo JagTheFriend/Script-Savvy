@@ -58,7 +58,7 @@ function BrandLogo() {
   );
 }
 
-export function NavbarComponent() {
+function NavbarComponent() {
   return (
     <div className="navbar bg-base-300">
       <div className="navbar-start">
@@ -96,5 +96,13 @@ export function NavbarComponent() {
       </div>
       <UserProfile />
     </div>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <section>
+      <NavbarComponent />
+    </section>
   );
 }
