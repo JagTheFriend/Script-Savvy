@@ -33,7 +33,7 @@ function Post() {
 
 export default function PostContents() {
   return (
-    <section className="mt-4 grid auto-cols-max grid-flow-row">
+    <section className="mt-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <Post />
       <Post />
       <Post />
