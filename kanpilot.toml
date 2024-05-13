@@ -1,0 +1,49 @@
+name = "project"
+skipFolders = [ "node_modules", ".vscode", "out", "dist", ".vscode-test" ]
+skipFiles = [ ".gitignore", "package.json" ]
+
+[[processes]]
+id = "process1"
+name = "To Do"
+
+  [[processes.tasks]]
+  id = "nj7q1zsy7aryozmpzo9g22rx"
+  title = "Color Pallet"
+  description = "<p>Generate a nice dark themed color pallet from https://www.realtimecolors.com</p>"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "Low"
+  linkCommits = [ ]
+
+  [[processes.tasks]]
+  id = "tsdz4zetkou98vcnbjtwaokw"
+  title = "Create all Routes"
+  description = "<p></p>"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "Normal"
+  linkCommits = [ ]
+
+[[processes]]
+id = "process2"
+name = "In Progress"
+
+  [[processes.tasks]]
+  id = "eurah18yepq96cz9hhza9iwf"
+  title = "Add Clerk"
+  description = "<p>Clerk Authentication</p>"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "High"
+  linkCommits = [ ]
+
+[[processes]]
+id = "process3"
+name = "Done"
+tasks = [ ]
