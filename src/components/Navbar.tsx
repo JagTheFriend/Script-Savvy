@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { Separator } from "./ui/separator";
 
 export function NavbarComponent() {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-300">
       <div className="flex-1">
         <Link href={"/"} className="btn btn-ghost text-xl">
           Script Savvy
@@ -52,11 +51,8 @@ export function NavbarComponent() {
 
 export default function Navbar() {
   return (
-    <>
-      <section className="sticky top-0 z-50">
-        <Navbar />
-      </section>
-      <Separator />
-    </>
+    <section className="sticky top-0 z-50">
+      <Navbar />
+    </section>
   );
 }
