@@ -11,7 +11,7 @@ export default function Page({
   return (
     <>
       <h1 className="cursor-pointer text-2xl transition-all hover:underline">
-        Please {searchParam === "sign-in" ? "login" : "register"} to Script
+        Please {searchParam === "sign-in" ? "login to" : "register for"} Script
         Savvy
       </h1>
       {searchParam === "sign-in" ? (
