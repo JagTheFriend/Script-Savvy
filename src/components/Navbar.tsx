@@ -1,38 +1,46 @@
 "use client";
 
+import { SignInButton, useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 
 function UserProfile() {
+  const { isSignedIn } = useAuth();
   return (
     <div className="navbar-end">
-      <div className="dropdown dropdown-end">
-        <div
-          tabIndex={0}
-          role="button"
-          className="avatar btn btn-circle btn-ghost"
-        >
-          <div className="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-            />
+      {isSignedIn ? (
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="avatar btn btn-circle btn-ghost"
+          >
+            <div className="w-10 rounded-full">
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              />
+            </div>
           </div>
+          <ul
+            tabIndex={0}
+            className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-200 p-2 shadow"
+          >
+            <li>
+              <Link href="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link href="/settings">Settings</Link>
+            </li>
+            <li>
+              <Link href="/logout">Logout</Link>
+            </li>
+          </ul>
         </div>
-        <ul
-          tabIndex={0}
-          className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-200 p-2 shadow"
-        >
-          <li>
-            <Link href="/profile">Profile</Link>
-          </li>
-          <li>
-            <Link href="/settings">Settings</Link>
-          </li>
-          <li>
-            <Link href="/logout">Logout</Link>
-          </li>
-        </ul>
-      </div>
+      ) : (
+        <div className="btn btn-ghost">
+          <SignInButton />
+        </div>
+      )}
     </div>
   );
 }
