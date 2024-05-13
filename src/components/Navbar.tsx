@@ -48,6 +48,14 @@ function Content() {
   );
 }
 
+function BrandLogo() {
+  return (
+    <Link href="/" className="btn btn-ghost text-xl">
+      Script Savvy
+    </Link>
+  );
+}
+
 export function NavbarComponent() {
   return (
     <div className="navbar bg-base-300">
@@ -76,9 +84,7 @@ export function NavbarComponent() {
             <Content />
           </ul>
         </div>
-        <Link href="/" className="btn btn-ghost text-xl">
-          Script Savvy
-        </Link>
+        <BrandLogo />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
