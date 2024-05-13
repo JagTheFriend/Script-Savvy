@@ -9,7 +9,7 @@ function UserProfile() {
         <div
           tabIndex={0}
           role="button"
-          className="btn btn-ghost btn-circle avatar"
+          className="avatar btn btn-circle btn-ghost"
         >
           <div className="w-10 rounded-full">
             <img
@@ -20,7 +20,7 @@ function UserProfile() {
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-200 p-2 shadow"
         >
           <li>
             <Link href="/profile">Profile</Link>
@@ -81,7 +81,7 @@ function NavbarComponent() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-300 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-300 p-2 shadow"
           >
             <Content />
           </ul>
@@ -89,8 +89,7 @@ function NavbarComponent() {
         <BrandLogo />
       </div>
       <div className="navbar-center hidden lg:flex">
-        {/* Dropdown content for smaller device */}
-        <ul className="menu menu-horizontal bg-base-200 px-1">
+        <ul className="menu menu-horizontal px-1">
           <Content />
         </ul>
       </div>
