@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function UserProfile() {
   return (
     <div className="navbar-end">
@@ -19,13 +21,13 @@ function UserProfile() {
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
           <li>
-            <a>Profile</a>
+            <Link href="/profile">Profile</Link>
           </li>
           <li>
-            <a>Settings</a>
+            <Link href="/settings">Settings</Link>
           </li>
           <li>
-            <a>Logout</a>
+            <Link href="/logout">Logout</Link>
           </li>
         </ul>
       </div>
@@ -37,10 +39,10 @@ function Content() {
   return (
     <>
       <li>
-        <a>Search</a>
+        <Link href={"/search"}>Search</Link>
       </li>
       <li>
-        <a>My Posts</a>
+        <Link href={"/my-posts"}>My Posts</Link>
       </li>
     </>
   );
@@ -74,7 +76,9 @@ export function NavbarComponent() {
             <Content />
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Script Savvy</a>
+        <Link href={"/"} className="btn btn-ghost text-xl">
+          Script Savvy
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
