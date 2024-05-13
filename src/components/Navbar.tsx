@@ -83,7 +83,7 @@ function NavbarComponent() {
 
 export default function Navbar() {
   return (
-    <section>
+    <section className="sticky top-0 z-50">
       <NavbarComponent />
     </section>
   );
