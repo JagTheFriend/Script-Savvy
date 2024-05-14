@@ -108,12 +108,14 @@ export default async function ProfilePage({
 
   return (
     <section className="mt-5 flex flex-col">
-      <DisplayUsername
-        username={user.username}
-        image={user.image}
-        dateJoined={user.dateJoined}
-        email={user.email}
-      />
+      <div className="border-b border-gray-700 pb-4">
+        <DisplayUsername
+          username={user.username}
+          image={user.image}
+          dateJoined={user.dateJoined}
+          email={user.email}
+        />
+      </div>
     </section>
   );
 }
