@@ -1,20 +1,31 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
+import { useFormStatus } from "react-dom";
 import { toast } from "react-toastify";
 import { createPost } from "~/lib/actions";
 
 function SubmitButton() {
+  const { pending } = useFormStatus();
+  const { push } = useRouter();
+
   return (
     <div className="flex flex-row items-center justify-center gap-4">
-      <button type="submit" className="btn btn-outline btn-success">
+      <button
+        type="submit"
+        className="btn btn-outline btn-success"
+        disabled={pending}
+      >
         Post
       </button>
-      <Link href="/" className="btn btn-outline btn-warning">
+      <button
+        className="btn btn-outline btn-warning"
+        disabled={pending}
+        onClick={() => push("/")}
+      >
         Cancel
-      </Link>
+      </button>
     </div>
   );
 }
