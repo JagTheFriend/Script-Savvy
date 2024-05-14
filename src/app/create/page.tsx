@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import { createPost } from "~/lib/actions";
@@ -20,6 +21,7 @@ function SubmitButton() {
 
 function Form() {
   const formRef = useRef<HTMLFormElement>(null);
+  const { push } = useRouter();
 
   return (
     <form
@@ -30,6 +32,7 @@ function Form() {
         }
         toast.success("Post created!");
         formRef.current?.reset();
+        push("/");
       }}
       ref={formRef}
       className="flex flex-col items-center justify-center gap-4 p-4"
