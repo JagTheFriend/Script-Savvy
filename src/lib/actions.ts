@@ -10,10 +10,10 @@ export async function getUserById(userId: string) {
       message: "",
       id: user.id,
       username:
-        user.username ||
-        user.firstName ||
-        user.lastName ||
-        user.fullName ||
+        user.username ??
+        user.firstName ??
+        user.lastName ??
+        user.fullName ??
         "Unknown",
       image: user.imageUrl,
     };
@@ -21,6 +21,9 @@ export async function getUserById(userId: string) {
     return {
       error: true,
       message: (error as Error).message ?? "Something went wrong!",
+      id: "",
+      username: "",
+      image: "",
     };
   }
 }
