@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
+import { Toaster } from "~/components/ui/sonner";
 
 export const metadata = {
   title: "Script Savvy",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable} antialiased`}>
         <body>{children}</body>
+        <Toaster />
       </html>
     </ClerkProvider>
   );
