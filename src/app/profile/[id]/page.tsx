@@ -1,6 +1,17 @@
 import { clerkClient, type User } from "@clerk/nextjs/server";
 import Link from "next/link";
 
+function DisplayError({ text }: { text: string }) {
+  return (
+    <section className="mt-10 flex cursor-pointer flex-col justify-center gap-4">
+      <p className="text-4xl transition-all hover:underline">{text}</p>
+      <Link className="btn btn-ghost" href="/">
+        Go Back
+      </Link>
+    </section>
+  );
+}
+
 export default async function ProfilePage({
   params,
 }: {
@@ -13,27 +24,9 @@ export default async function ProfilePage({
     user = await clerkClient.users.getUser(userId);
   } catch (error: unknown) {
     if ((error as { message: string }).message === "Not Found") {
-      return (
-        <section className="mt-10 flex cursor-pointer flex-col justify-center gap-4">
-          <p className="text-4xl transition-all hover:underline">
-            User Not Found!
-          </p>
-          <Link className="btn btn-ghost" href="/">
-            Go Back
-          </Link>
-        </section>
-      );
+      return <DisplayError text="User not found" />;
     } else {
-      return (
-        <section className="mt-10 flex cursor-pointer flex-col justify-center gap-4">
-          <p className="text-4xl transition-all hover:underline">
-            Something went wrong!
-          </p>
-          <Link className="btn btn-ghost" href="/">
-            Go Back
-          </Link>
-        </section>
-      );
+      return <DisplayError text="Something went wrong" />;
     }
   }
 
