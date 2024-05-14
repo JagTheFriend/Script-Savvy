@@ -31,17 +31,7 @@ name = "To Do"
 [[processes]]
 id = "process2"
 name = "In Progress"
-
-  [[processes.tasks]]
-  id = "q5tyiqqvuv81yjmdo2jtiieu"
-  title = "Create Database"
-  description = "<p>Create database using Prisma</p>"
-  tag = "backlog"
-  linkFiles = [ ]
-  dueDate = ""
-  checkList = [ ]
-  priority = "High"
-  linkCommits = [ ]
+tasks = [ ]
 
 [[processes]]
 id = "process3"
@@ -51,6 +41,17 @@ name = "Done"
   id = "eurah18yepq96cz9hhza9iwf"
   title = "Add Clerk"
   description = "<p>Clerk Authentication</p>"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "High"
+  linkCommits = [ ]
+
+  [[processes.tasks]]
+  id = "q5tyiqqvuv81yjmdo2jtiieu"
+  title = "Create Database"
+  description = "<p>Create database using Prisma</p>"
   tag = "backlog"
   linkFiles = [ ]
   dueDate = ""
