@@ -1,4 +1,4 @@
-name = "project"
+name = "blog-website"
 skipFolders = [ "node_modules", ".vscode", "out", "dist", ".vscode-test" ]
 skipFiles = [ ".gitignore", "package.json" ]
 
@@ -17,6 +17,10 @@ name = "To Do"
   priority = "Low"
   linkCommits = [ ]
 
+[[processes]]
+id = "process2"
+name = "In Progress"
+
   [[processes.tasks]]
   id = "tsdz4zetkou98vcnbjtwaokw"
   title = "Create all Routes"
@@ -29,8 +33,8 @@ name = "To Do"
   linkCommits = [ ]
 
 [[processes]]
-id = "process2"
-name = "In Progress"
+id = "process3"
+name = "Done"
 
   [[processes.tasks]]
   id = "eurah18yepq96cz9hhza9iwf"
@@ -42,8 +46,3 @@ name = "In Progress"
   checkList = [ ]
   priority = "High"
   linkCommits = [ ]
-
-[[processes]]
-id = "process3"
-name = "Done"
-tasks = [ ]
