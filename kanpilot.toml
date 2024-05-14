@@ -17,6 +17,10 @@ name = "To Do"
   priority = "Low"
   linkCommits = [ ]
 
+[[processes]]
+id = "process2"
+name = "In Progress"
+
   [[processes.tasks]]
   id = "tsdz4zetkou98vcnbjtwaokw"
   title = "Create all Routes"
@@ -27,11 +31,6 @@ name = "To Do"
   checkList = [ ]
   priority = "High"
   linkCommits = [ ]
-
-[[processes]]
-id = "process2"
-name = "In Progress"
-tasks = [ ]
 
 [[processes]]
 id = "process3"
