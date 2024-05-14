@@ -19,6 +19,8 @@ function Form() {
   return (
     <form
       action={async (formData) => {
+        "use server";
+
         const { error, message, postId } = await createPost(formData);
         if (error) {
           return toast(message);
