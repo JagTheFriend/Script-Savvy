@@ -1,8 +1,14 @@
+import Link from "next/link";
+
 function SubmitButton() {
   return (
     <div className="flex flex-row items-center justify-center gap-4">
-      <button className="btn btn-outline btn-success">Post</button>
-      <button className="btn btn-outline btn-warning">Cancel</button>
+      <button type="submit" className="btn btn-outline btn-success">
+        Post
+      </button>
+      <Link href="/" className="btn btn-outline btn-warning">
+        Cancel
+      </Link>
     </div>
   );
 }
