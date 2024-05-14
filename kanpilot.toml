@@ -17,10 +17,6 @@ name = "To Do"
   priority = "Low"
   linkCommits = [ ]
 
-[[processes]]
-id = "process2"
-name = "In Progress"
-
   [[processes.tasks]]
   id = "tsdz4zetkou98vcnbjtwaokw"
   title = "Create all Routes"
@@ -29,7 +25,22 @@ name = "In Progress"
   linkFiles = [ ]
   dueDate = ""
   checkList = [ ]
-  priority = "Normal"
+  priority = "High"
+  linkCommits = [ ]
+
+[[processes]]
+id = "process2"
+name = "In Progress"
+
+  [[processes.tasks]]
+  id = "q5tyiqqvuv81yjmdo2jtiieu"
+  title = "Create Database"
+  description = "<p>Create database using Prisma</p>"
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = "High"
   linkCommits = [ ]
 
 [[processes]]
