@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { toast } from "sonner";
 import { createPost } from "~/lib/actions";
 
 function SubmitButton() {
@@ -23,9 +22,9 @@ function Form() {
       action={async (formData) => {
         const { error, message, postId } = await createPost(formData);
         if (error) {
-          return toast(message);
+          return alert(message);
         }
-        toast("Post created!");
+        alert("Post created!");
       }}
       className="flex flex-col items-center justify-center gap-4 p-4"
     >
