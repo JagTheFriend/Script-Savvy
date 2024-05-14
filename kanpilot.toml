@@ -17,6 +17,17 @@ name = "To Do"
   priority = "Low"
   linkCommits = [ ]
 
+  [[processes.tasks]]
+  id = "xb55gmw07lp5f2sgsmgsn40k"
+  title = "Generate Dynamic Metadata"
+  description = ""
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = ""
+  linkCommits = [ ]
+
 [[processes]]
 id = "process2"
 name = "In Progress"
