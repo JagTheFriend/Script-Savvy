@@ -39,22 +39,23 @@ export async function createPost(formData: FormData) {
   const { userId: authorId } = auth();
 
   if (!authorId) {
-    return { error: true, message: "Unauthorized" };
+    return { error: true, message: "Unauthorized", postId: "" };
   }
 
   try {
-    await db.post.create({
+    const post = await db.post.create({
       data: {
         title,
         content,
         authorId,
       },
     });
-    return { error: false, message: "Post created" };
+    return { error: false, message: "Post created", postId: post.id };
   } catch (error) {
     return {
       error: true,
       message: (error as Error).message ?? "Something went wrong!",
+      postId: "",
     };
   }
 }

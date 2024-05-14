@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { toast } from "sonner";
+import { createPost } from "~/lib/actions";
 
 function SubmitButton() {
   return (
@@ -15,13 +17,24 @@ function SubmitButton() {
 
 function Form() {
   return (
-    <form className="flex flex-col items-center justify-center gap-4 p-4">
+    <form
+      action={async (formData) => {
+        const { error, message, postId } = await createPost(formData);
+        if (error) {
+          return toast(message);
+        }
+        toast("Post created!");
+      }}
+      className="flex flex-col items-center justify-center gap-4 p-4"
+    >
       <input
+        name="title"
         type="text"
         placeholder="Enter Title"
         className="input input-bordered w-full lg:max-w-4xl"
       />
       <textarea
+        name="content"
         placeholder="Content"
         className="textarea textarea-bordered textarea-lg w-full"
       />
