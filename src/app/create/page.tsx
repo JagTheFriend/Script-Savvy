@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { toast } from "sonner";
 import { createPost } from "~/lib/actions";
@@ -19,8 +21,6 @@ function Form() {
   return (
     <form
       action={async (formData) => {
-        "use server";
-
         const { error, message, postId } = await createPost(formData);
         if (error) {
           return toast(message);

@@ -56,7 +56,7 @@ export async function createPost(formData: FormData) {
   } catch (error) {
     return {
       error: true,
-      message: (error as Error).message ?? "Something went wrong!",
+      message: "Something went wrong!",
       postId: "",
     };
   }
