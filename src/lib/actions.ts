@@ -16,6 +16,8 @@ export async function getUserById(userId: string) {
         user.fullName ??
         "Unknown",
       image: user.imageUrl,
+      dateJoined: user.createdAt,
+      email: user.emailAddresses[0]?.emailAddress || "unknown",
     };
   } catch (error) {
     return {
@@ -24,6 +26,8 @@ export async function getUserById(userId: string) {
       id: "",
       username: "",
       image: "",
+      dateJoined: 0,
+      email: "",
     };
   }
 }
