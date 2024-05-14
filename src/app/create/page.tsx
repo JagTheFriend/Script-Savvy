@@ -13,7 +13,7 @@ function Form() {
       <input
         type="text"
         placeholder="Enter Title"
-        className="input input-bordered w-full lg:max-w-xs"
+        className="input input-bordered w-full lg:max-w-4xl"
       />
       <textarea
         placeholder="Content"
