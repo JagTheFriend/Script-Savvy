@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, clerkClient } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 import { db } from "~/server/db";
 
 export async function getUserById(userId: string) {
@@ -50,6 +51,7 @@ export async function createPost(formData: FormData) {
         authorId,
       },
     });
+    revalidatePath("/", "page");
     return { error: false, message: "Post created", postId: post.id };
   } catch (error) {
     return {
