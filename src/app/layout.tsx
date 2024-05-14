@@ -21,7 +21,7 @@ export default function RootLayout({
       <html lang="en" className={`${GeistSans.variable} antialiased`}>
         <body>
           {children}
-          <ToastContainer />
+          <ToastContainer position="top-right" />
         </body>
       </html>
     </ClerkProvider>

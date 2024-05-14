@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRef } from "react";
+import { toast } from "react-toastify";
 import { createPost } from "~/lib/actions";
 
 function SubmitButton() {
@@ -17,15 +19,19 @@ function SubmitButton() {
 }
 
 function Form() {
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
     <form
       action={async (formData) => {
         const { error, message, postId } = await createPost(formData);
         if (error) {
-          return alert(message);
+          return toast.error(message);
         }
-        alert("Post created!");
+        toast.success("Post created!");
+        formRef.current?.reset();
       }}
+      ref={formRef}
       className="flex flex-col items-center justify-center gap-4 p-4"
     >
       <input
