@@ -9,7 +9,7 @@ export default async function ReadPostPage({
   const { postId } = params;
   const returnedData = await getPostContent(postId);
 
-  if (returnedData.error || !returnedData.post) {
+  if (returnedData.error ?? !returnedData.post) {
     return <DisplayError />;
   }
 
