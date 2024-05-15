@@ -43,7 +43,49 @@ export async function createPost(formData: FormData) {
   }
 }
 
-export async function getPostByQuery(query: string, limit = 10) {}
+export async function getPostByQuery(query: string, limit = 10) {
+  try {
+    const posts = await db.post.findMany({
+      take: limit,
+      orderBy: {
+        createdAt: "desc",
+      },
+      where: {
+        title: {
+          contains: query,
+        },
+      },
+    });
+
+    const userIds = posts.map((post) => post.authorId);
+    const usersPromise = clerkClient.users.getUserList({
+      userId: userIds,
+    });
+
+    const [usersResponse] = await Promise.all([usersPromise]);
+
+    const users = usersResponse.data;
+    const returnData = [];
+
+    for (const post of posts) {
+      const user = users.find((user) => user.id === post.authorId);
+      if (!user) continue;
+
+      const details = getUserDetail(user);
+
+      returnData.push({
+        post: post,
+        author: details,
+      });
+    }
+
+    return {
+      data: returnData,
+    };
+  } catch (error) {
+    return { error: true };
+  }
+}
 
 export async function getPostByUser(userId: string, limit = 10) {
   try {
@@ -82,7 +124,6 @@ export async function getPosts(limit = 10) {
 
     const userIds = posts.map((post) => post.authorId);
     const usersPromise = clerkClient.users.getUserList({
-      limit: 10,
       userId: userIds,
     });
 
