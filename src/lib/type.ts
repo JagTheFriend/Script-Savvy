@@ -3,4 +3,5 @@ export type CustomUserType = {
   username: string;
   email: string;
   image: string;
-}
+  dateJoined: number;
+};
