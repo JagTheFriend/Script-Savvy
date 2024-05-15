@@ -1,8 +1,8 @@
 import type { Post } from "@prisma/client";
 import Link from "next/link";
-import { toast } from "react-toastify";
 import { getPosts } from "~/lib/actions";
 import type { CustomUserType } from "~/lib/type";
+import DisplayError from "./DisplayError";
 
 function DisplayUsername({
   user,
@@ -59,7 +59,7 @@ export default async function PostContents({ userId }: { userId?: string }) {
   const returnedData = await getPosts(10, userId);
 
   if (returnedData.error) {
-    return toast.error("Something went wrong!");
+    return <DisplayError />;
   }
 
   return (
