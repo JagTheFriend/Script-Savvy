@@ -1,12 +1,3 @@
-import "~/styles/globals.css";
-
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
 export const metadata = {
   title: "Authentication",
   description: "login page for Todo app",
