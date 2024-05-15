@@ -14,13 +14,13 @@ export default async function ReadPostPage({
   }
 
   return (
-    <>
-      <section className="mt-5 flex flex-col break-words border-b border-gray-700 px-1">
+    <div className="m-5">
+      <section className="flex flex-col break-words border-b border-gray-700 px-1">
         <p className="text-3xl font-bold">{returnedData.post.title}</p>
       </section>
       <section>
         <p>{returnedData.post.content}</p>
       </section>
-    </>
+    </div>
   );
 }
