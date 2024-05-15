@@ -43,11 +43,19 @@ export async function createPost(formData: FormData) {
   }
 }
 
-export async function getPosts(limit = 10) {
+export async function getPosts(limit = 10, userId?: string) {
   try {
-    const { data: users } = await clerkClient.users.getUserList({
-      limit: 10,
-    });
+    let users = [];
+
+    if (userId) {
+      const user = await clerkClient.users.getUser(userId);
+      users = [user];
+    } else {
+      const { data } = await clerkClient.users.getUserList({
+        limit: 10,
+      });
+      users = data;
+    }
 
     const posts = await db.post.findMany({
       take: limit,

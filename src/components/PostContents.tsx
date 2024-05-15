@@ -55,8 +55,8 @@ function PostContent(props: { post: Post; user: CustomUserType }) {
   );
 }
 
-export default async function PostContents() {
-  const returnedData = await getPosts();
+export default async function PostContents({ userId }: { userId?: string }) {
+  const returnedData = await getPosts(10, userId);
 
   if (returnedData.error) {
     return toast.error("Something went wrong!");
