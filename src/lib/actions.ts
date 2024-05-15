@@ -66,7 +66,6 @@ export async function getPostByUser(userId: string, limit = 10) {
         author: details,
       })),
     };
-
   } catch (error) {
     return { error: true };
   }
@@ -81,11 +80,15 @@ export async function getPosts(limit = 10) {
       },
     });
 
-    const { data: users } = await clerkClient.users.getUserList({
+    const userIds = posts.map((post) => post.authorId);
+    const usersPromise = clerkClient.users.getUserList({
       limit: 10,
-      userId: posts.map((post) => post.authorId),
+      userId: userIds,
     });
 
+    const [usersResponse] = await Promise.all([usersPromise]);
+
+    const users = usersResponse.data;
     const returnData = [];
 
     for (const post of posts) {
