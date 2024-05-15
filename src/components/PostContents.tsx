@@ -37,7 +37,7 @@ function PostContent(props: { post: Post; user: CustomUserType }) {
   const { post } = props;
 
   return (
-    <div className="w-full rounded-lg border border-gray-200 bg-white text-gray-900 shadow-md">
+    <div className="w-full max-w-screen-sm rounded-lg border border-gray-200 bg-white text-gray-900 shadow-md">
       <div className="p-5">
         <DisplayUsername user={props.user} dateCreated={post.createdAt} />
         <h5 className="mb-2 text-2xl font-bold tracking-tight ">
@@ -63,7 +63,7 @@ export default async function PostContents() {
   }
 
   return (
-    <section className="m-1.5 flex flex-col gap-2">
+    <section className="m-1.5 flex flex-col items-center gap-2">
       {returnedData.data?.map((data) => (
         <PostContent key={data.post.id} post={data.post} user={data.author} />
       ))}
