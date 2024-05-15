@@ -1,8 +1,8 @@
-import { Post } from "@prisma/client";
+import type { Post } from "@prisma/client";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { getPosts } from "~/lib/actions";
-import { CustomUserType } from "~/lib/type";
+import type { CustomUserType } from "~/lib/type";
 
 function DisplayUsername(props: { img: string; username: string }) {
   return <div></div>;

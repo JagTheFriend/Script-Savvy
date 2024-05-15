@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getUserById } from "~/lib/actions";
-import { CustomUserType } from "~/lib/type";
+import type { CustomUserType } from "~/lib/type";
 
 function DateJoined({ dateJoined }: { dateJoined: number }) {
   return (
@@ -55,7 +55,7 @@ function ProfileImage({
     <div className="flex flex-row items-center justify-center gap-4">
       <div className="avatar">
         <div className="w-12 rounded-full">
-          <img src={image} />
+          <img src={image} alt={"Profile Image"} />
         </div>
       </div>
       <p className="cursor-default font-bold sm:text-2xl md:text-2xl lg:text-4xl">
@@ -98,7 +98,7 @@ export default async function ProfilePage({
   const { id: userId } = params;
   const data = await getUserById(userId);
 
-  if (data.error || !data.details) {
+  if (data.error ?? !data.details) {
     return <DisplayError text="Something went wrong!" />;
   }
 

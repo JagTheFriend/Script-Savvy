@@ -8,7 +8,7 @@ import { createPost } from "~/lib/actions";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
-  const { push } = useRouter();
+  const router = useRouter();
 
   return (
     <div className="flex flex-row items-center justify-center gap-4">
@@ -22,7 +22,7 @@ function SubmitButton() {
       <button
         className="btn btn-outline btn-warning"
         disabled={pending}
-        onClick={() => push("/")}
+        onClick={() => void router.push("/")}
       >
         Cancel
       </button>
@@ -32,7 +32,7 @@ function SubmitButton() {
 
 function Form() {
   const formRef = useRef<HTMLFormElement>(null);
-  const { push } = useRouter();
+  const router = useRouter();
 
   return (
     <form
@@ -43,7 +43,7 @@ function Form() {
         }
         toast.success("Post created!");
         formRef.current?.reset();
-        push(`/read/${postId}`);
+        void router.push(`/read/${postId}`);
       }}
       ref={formRef}
       className="flex flex-col items-center justify-center gap-4 p-4"

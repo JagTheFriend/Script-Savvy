@@ -1,7 +1,7 @@
-import { User } from "@clerk/nextjs/server";
+import type { User } from "@clerk/nextjs/server";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { CustomUserType } from "./type";
+import type { CustomUserType } from "./type";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
