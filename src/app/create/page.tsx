@@ -43,7 +43,7 @@ function Form() {
         }
         toast.success("Post created!");
         formRef.current?.reset();
-        push("/");
+        push(`/read/${postId}`);
       }}
       ref={formRef}
       className="flex flex-col items-center justify-center gap-4 p-4"
