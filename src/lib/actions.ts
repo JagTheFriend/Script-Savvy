@@ -3,23 +3,16 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { db } from "~/server/db";
+import { getUserDetail } from "./utils";
 
 export async function getUserById(userId: string) {
   try {
     const user = await clerkClient.users.getUser(userId);
+    const details = getUserDetail(user);
     return {
       error: false,
       message: "",
-      id: user.id,
-      username:
-        user.username ??
-        user.firstName ??
-        user.lastName ??
-        user.fullName ??
-        "Unknown",
-      image: user.imageUrl,
-      dateJoined: user.createdAt,
-      email: user.emailAddresses[0]?.emailAddress || "unknown",
+      ...details,
     };
   } catch (error) {
     return {
@@ -86,15 +79,13 @@ export async function getPosts(limit = 10) {
 
     for (const post of posts) {
       const user = users.find((user) => user.id === post.authorId);
-
       if (!user) continue;
+
+      const details = getUserDetail(user);
 
       returnData.push({
         post: post,
-        author: {
-          username: user.username ?? user.firstName ?? user.lastName ?? "",
-          image: user.imageUrl,
-        },
+        author: details,
       });
     }
 
