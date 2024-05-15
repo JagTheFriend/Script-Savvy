@@ -21,7 +21,7 @@ function UserProfileComponent() {
 }
 
 function Content() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, userId } = useAuth();
 
   return (
     <>
@@ -33,7 +33,7 @@ function Content() {
       </li>
       {isSignedIn && (
         <li>
-          <Link href="/my-posts">My Posts</Link>
+          <Link href={`/profile/${userId}`}>My Posts</Link>
         </li>
       )}
     </>
