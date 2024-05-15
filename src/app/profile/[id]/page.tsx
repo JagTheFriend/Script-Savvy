@@ -104,11 +104,13 @@ export default async function ProfilePage({
   }
 
   return (
-    <section className="mt-5 flex flex-col">
-      <div className="border-b border-gray-700 pb-4">
+    <>
+      <section className="mt-5 flex flex-col border-b border-gray-700 pb-4">
         <DisplayUsername user={data.details} />
-      </div>
-      <PostContents userId={userId} />
-    </section>
+      </section>
+      <section>
+        <PostContents userId={userId} />
+      </section>
+    </>
   );
 }
