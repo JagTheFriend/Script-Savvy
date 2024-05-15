@@ -90,3 +90,23 @@ export async function getPosts(limit = 10, userId?: string) {
     return { error: true };
   }
 }
+
+export async function getPostContent(postId: string) {
+  try {
+    const post = await db.post.findUniqueOrThrow({
+      where: {
+        id: postId,
+      },
+    });
+
+    if (!post) {
+      return { error: true };
+    }
+
+    return {
+      post,
+    };
+  } catch (error) {
+    return { error: true };
+  }
+}
