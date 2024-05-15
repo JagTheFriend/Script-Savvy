@@ -24,6 +24,9 @@ function Content() {
   return (
     <>
       <li>
+        <Link href="/">Home</Link>
+      </li>
+      <li>
         <Link href="/search">Search</Link>
       </li>
       <li>
