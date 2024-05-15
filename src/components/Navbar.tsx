@@ -29,6 +29,9 @@ function Content() {
         <Link href="/">Home</Link>
       </li>
       <li>
+        <Link href="/create">Create post</Link>
+      </li>
+      <li>
         <Link href="/search">Search</Link>
       </li>
       {isSignedIn && (
