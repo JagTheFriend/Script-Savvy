@@ -13,7 +13,6 @@ export async function getUserById(userId: string) {
   } catch (error) {
     return {
       error: true,
-      message: (error as Error).message ?? "Something went wrong!",
     };
   }
 }
@@ -25,7 +24,7 @@ export async function createPost(formData: FormData) {
   const { userId: authorId } = auth();
 
   if (!authorId) {
-    return { error: true, message: "Unauthorized" };
+    return { error: true };
   }
 
   try {
@@ -40,10 +39,7 @@ export async function createPost(formData: FormData) {
     revalidatePath("/", "page");
     return { postId: post.id };
   } catch (error) {
-    return {
-      error: true,
-      message: "Something went wrong!",
-    };
+    return { error: true };
   }
 }
 
@@ -83,9 +79,6 @@ export async function getPosts(limit = 10) {
       data: returnData,
     };
   } catch (error) {
-    return {
-      error: true,
-      message: "Something went wrong!",
-    };
+    return { error: true };
   }
 }
