@@ -10,19 +10,12 @@ export async function getUserById(userId: string) {
     const user = await clerkClient.users.getUser(userId);
     const details = getUserDetail(user);
     return {
-      error: false,
-      message: "",
       ...details,
     };
   } catch (error) {
     return {
       error: true,
       message: (error as Error).message ?? "Something went wrong!",
-      id: "",
-      username: "",
-      image: "",
-      dateJoined: 0,
-      email: "",
     };
   }
 }
@@ -34,7 +27,7 @@ export async function createPost(formData: FormData) {
   const { userId: authorId } = auth();
 
   if (!authorId) {
-    return { error: true, message: "Unauthorized", postId: "" };
+    return { error: true, message: "Unauthorized" };
   }
 
   try {
@@ -47,12 +40,11 @@ export async function createPost(formData: FormData) {
       },
     });
     revalidatePath("/", "page");
-    return { error: false, message: "Post created", postId: post.id };
+    return { postId: post.id };
   } catch (error) {
     return {
       error: true,
       message: "Something went wrong!",
-      postId: "",
     };
   }
 }
@@ -90,15 +82,12 @@ export async function getPosts(limit = 10) {
     }
 
     return {
-      error: false,
-      message: "",
       data: returnData,
     };
   } catch (error) {
     return {
       error: true,
       message: "Something went wrong!",
-      posts: [],
     };
   }
 }
