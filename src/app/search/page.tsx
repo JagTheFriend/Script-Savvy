@@ -7,8 +7,8 @@ export default function SearchPage({
 }) {
   const query = searchParams.q;
   return (
-    <>
-      <section className="m-5 flex flex-col border-b border-gray-700 pb-4">
+    <div className="m-5">
+      <section className="flex flex-col border-b border-gray-700 pb-4">
         <label className="input input-bordered flex items-center gap-2">
           <input type="text" className="grow" placeholder="Search" />
           <svg
@@ -25,6 +25,6 @@ export default function SearchPage({
           </svg>
         </label>
       </section>
-    </>
+    </div>
   );
 }
