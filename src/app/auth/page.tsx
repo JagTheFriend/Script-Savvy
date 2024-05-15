@@ -1,4 +1,5 @@
 import { SignIn, SignUp } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Page({
   params: _params,
@@ -19,6 +20,9 @@ export default function Page({
       ) : (
         <SignUp routing="hash" />
       )}
+      <Link href="/" className="btn btn-link text-white">
+        ← Go Back
+      </Link>
     </>
   );
 }
