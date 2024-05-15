@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PostContents from "~/components/PostContents";
 import { getUserById } from "~/lib/actions";
 import type { CustomUserType } from "~/lib/type";
 
@@ -107,6 +108,7 @@ export default async function ProfilePage({
       <div className="border-b border-gray-700 pb-4">
         <DisplayUsername user={data.details} />
       </div>
+      <PostContents userId={userId} />
     </section>
   );
 }
