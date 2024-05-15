@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DisplayError from "~/components/DisplayError";
 import PostContents from "~/components/PostContents";
 import { getUserById } from "~/lib/actions";
 import type { CustomUserType } from "~/lib/type";
@@ -75,19 +76,6 @@ function DisplayUsername({ user }: { user: CustomUserType }) {
         {user.email !== "unknown" && <EmailAddress email={user.email} />}
       </div>
     </div>
-  );
-}
-
-function DisplayError({ text }: { text: string }) {
-  return (
-    <section className="mt-10 flex flex-col items-center justify-center gap-4">
-      <p className="cursor-default text-4xl transition-all hover:underline">
-        {text}
-      </p>
-      <Link className="btn btn-ghost" href="/">
-        Go Back
-      </Link>
-    </section>
   );
 }
 
