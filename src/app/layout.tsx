@@ -47,7 +47,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable} antialiased`}>
         <body>
-          <ToastContainer position="top-right" />
+          <ToastContainer position="bottom-center" />
           {/* Display Loading Page while Clerk is loading */}
           <ClerkLoading>
             <LoadingPage />
