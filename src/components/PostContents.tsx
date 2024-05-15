@@ -1,4 +1,5 @@
 import { Post } from "@prisma/client";
+import Link from "next/link";
 import { db } from "~/server/db";
 
 function PostContent({ post }: { post: Post }) {
@@ -11,13 +12,13 @@ function PostContent({ post }: { post: Post }) {
               {post.title}
             </h5>
           </a>
-          <p className="mb-3 font-normal text-gray-700">{post.content}</p>
-          <a
+          <p className="mb-3 font-normal text-gray-700">{post.description}</p>
+          <Link
             className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
-            href="#"
+            href={`/read/${post.id}`}
           >
             Read more
-          </a>
+          </Link>
         </div>
       </div>
     </div>
