@@ -98,14 +98,14 @@ export default async function ProfilePage({
   const { id: userId } = params;
   const data = await getUserById(userId);
 
-  if (data.error) {
+  if (data.error || !data.details) {
     return <DisplayError text="Something went wrong!" />;
   }
 
   return (
     <section className="mt-5 flex flex-col">
       <div className="border-b border-gray-700 pb-4">
-        <DisplayUsername user={data} />
+        <DisplayUsername user={data.details} />
       </div>
     </section>
   );

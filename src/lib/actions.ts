@@ -9,7 +9,7 @@ export async function getUserById(userId: string) {
   try {
     const user = await clerkClient.users.getUser(userId);
     const details = getUserDetail(user);
-    return details;
+    return { details };
   } catch (error) {
     return {
       error: true,
