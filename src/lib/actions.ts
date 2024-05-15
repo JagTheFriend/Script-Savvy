@@ -37,6 +37,7 @@ export async function getUserById(userId: string) {
 export async function createPost(formData: FormData) {
   const title = formData.get("title") as string;
   const content = formData.get("content") as string;
+  const description = formData.get("description") as string;
   const { userId: authorId } = auth();
 
   if (!authorId) {
@@ -49,6 +50,7 @@ export async function createPost(formData: FormData) {
         title,
         content,
         authorId,
+        description,
       },
     });
     revalidatePath("/", "page");

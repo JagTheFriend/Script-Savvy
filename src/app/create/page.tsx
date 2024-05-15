@@ -54,6 +54,12 @@ function Form() {
         placeholder="Enter Title"
         className="input input-bordered w-full lg:max-w-4xl"
       />
+      <input
+        name="description"
+        type="text"
+        placeholder="Enter Description"
+        className="input input-bordered w-full lg:max-w-4xl"
+      />
       <textarea
         name="content"
         placeholder="Content"
