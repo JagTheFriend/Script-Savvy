@@ -14,8 +14,8 @@ export default async function ReadPostPage({
   }
 
   return (
-    <div className="m-5">
-      <section className="flex flex-col break-words border-b border-gray-700 px-1">
+    <div className="m-2">
+      <section className="flex flex-col break-words border-b border-gray-700">
         <p className="text-3xl font-bold">{returnedData.post.title}</p>
       </section>
       <section>
