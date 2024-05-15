@@ -1,16 +1,30 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useDebounceValue } from "usehooks-ts";
 
 export default function SearchBar() {
+  const router = useRouter();
   const query = useSearchParams().get("q") ?? "";
-  const [searchValue, setSearchValue] = useState(query);
+  const [debouncedSearchValue, setSearchValue] = useDebounceValue(query, 3000);
+
+  useEffect(() => {
+    void router.push(`/search?q=${debouncedSearchValue}`);
+  }, [debouncedSearchValue]);
 
   return (
     <section className="flex flex-col border-b border-gray-700 pb-4">
       <label className="input input-bordered flex items-center gap-2">
-        <input type="text" className="grow" placeholder="Search" />
+        <input
+          type="text"
+          className="grow"
+          placeholder="Search"
+          defaultValue={query}
+          onChange={(event) => setSearchValue(event.target.value)}
+          required
+          autoFocus
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
