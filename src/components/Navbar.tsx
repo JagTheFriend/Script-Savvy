@@ -1,6 +1,6 @@
 "use client";
 
-import { SignInButton, useAuth, UserButton } from "@clerk/nextjs";
+import { useAuth, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 function UserProfileComponent() {
@@ -12,9 +12,9 @@ function UserProfileComponent() {
           <UserButton />
         </div>
       ) : (
-        <div className="btn btn-ghost">
-          <SignInButton />
-        </div>
+        <Link className="btn btn-ghost" href="/auth">
+          Sign in
+        </Link>
       )}
     </div>
   );
