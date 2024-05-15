@@ -53,17 +53,20 @@ function Form() {
         type="text"
         placeholder="Enter Title"
         className="input input-bordered w-full lg:max-w-4xl"
+        required
       />
       <input
         name="description"
         type="text"
         placeholder="Enter Description"
         className="input input-bordered w-full lg:max-w-4xl"
+        required
       />
       <textarea
         name="content"
         placeholder="Content"
         className="textarea textarea-bordered textarea-lg w-full"
+        required
       />
       <SubmitButton />
     </form>
