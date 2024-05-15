@@ -4,8 +4,28 @@ import { toast } from "react-toastify";
 import { getPosts } from "~/lib/actions";
 import type { CustomUserType } from "~/lib/type";
 
-function DisplayUsername(props: { img: string; username: string }) {
-  return <div></div>;
+function DisplayUsername({
+  user,
+  dateCreated,
+}: {
+  user: CustomUserType;
+  dateCreated: Date;
+}) {
+  return (
+    <div className="flex flex-row items-center gap-2 text-black">
+      <div className="avatar">
+        <div className="w-8 rounded-full">
+          <img src={user.image} alt={"Profile Image"} />
+        </div>
+      </div>
+      <div className="flex flex-col gap-0">
+        <p className="cursor-default text-lg font-medium">{user.username}</p>
+        <p className="cursor-default text-sm font-extralight">
+          {dateCreated.toLocaleDateString()}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 function PostContent(props: { post: Post; user: CustomUserType }) {
@@ -14,6 +34,7 @@ function PostContent(props: { post: Post; user: CustomUserType }) {
   return (
     <div className="w-full rounded-lg border border-gray-200 bg-white shadow-md">
       <div className="p-5">
+        <DisplayUsername user={props.user} dateCreated={post.createdAt} />
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {post.title}
