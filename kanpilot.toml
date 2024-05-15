@@ -43,6 +43,17 @@ name = "In Progress"
   priority = "High"
   linkCommits = [ ]
 
+  [[processes.tasks]]
+  id = "pt5sxuc48l218czamkqm32cp"
+  title = "Search bar"
+  description = ""
+  tag = "backlog"
+  linkFiles = [ ]
+  dueDate = ""
+  checkList = [ ]
+  priority = ""
+  linkCommits = [ ]
+
 [[processes]]
 id = "process3"
 name = "Done"
