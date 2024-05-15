@@ -35,7 +35,7 @@ export default async function PostContents() {
   const returnedData = await getPosts();
 
   if (returnedData.error) {
-    return toast.error(returnedData.message);
+    return toast.error("Something went wrong!");
   }
 
   return (

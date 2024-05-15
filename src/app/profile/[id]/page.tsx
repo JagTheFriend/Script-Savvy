@@ -99,7 +99,7 @@ export default async function ProfilePage({
   const data = await getUserById(userId);
 
   if (data.error) {
-    return <DisplayError text={data.message ?? "An error occurred"} />;
+    return <DisplayError text="Something went wrong!" />;
   }
 
   return (

@@ -37,9 +37,9 @@ function Form() {
   return (
     <form
       action={async (formData) => {
-        const { error, message, postId } = await createPost(formData);
+        const { error, postId } = await createPost(formData);
         if (error) {
-          return toast.error(message);
+          return toast.error("Something went wrong!");
         }
         toast.success("Post created!");
         formRef.current?.reset();
