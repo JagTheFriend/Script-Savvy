@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getUserById } from "~/lib/actions";
+import { CustomUserType } from "~/lib/type";
 
 function DateJoined({ dateJoined }: { dateJoined: number }) {
   return (
@@ -9,10 +10,10 @@ function DateJoined({ dateJoined }: { dateJoined: number }) {
         width="24"
         height="24"
         stroke="white"
-        stroke-width="2"
+        strokeWidth="2"
         fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
       </svg>
@@ -64,18 +65,13 @@ function ProfileImage({
   );
 }
 
-function DisplayUsername(props: {
-  username: string;
-  image: string;
-  email: string;
-  dateJoined: number;
-}) {
+function DisplayUsername({ user }: { user: CustomUserType }) {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <ProfileImage image={props.image} username={props.username} />
+      <ProfileImage image={user.image} username={user.username} />
       <div className="flex flex-col justify-center gap-2">
-        <DateJoined dateJoined={props.dateJoined} />
-        {props.email !== "unknown" && <EmailAddress email={props.email} />}
+        <DateJoined dateJoined={user.dateJoined} />
+        {user.email !== "unknown" && <EmailAddress email={user.email} />}
       </div>
     </div>
   );
@@ -100,21 +96,16 @@ export default async function ProfilePage({
   params: { id: string };
 }) {
   const { id: userId } = params;
-  const user = await getUserById(userId);
+  const data = await getUserById(userId);
 
-  if (user.error) {
-    return <DisplayError text={user.message} />;
+  if (data.error) {
+    return <DisplayError text={data.message ?? "An error occurred"} />;
   }
 
   return (
     <section className="mt-5 flex flex-col">
       <div className="border-b border-gray-700 pb-4">
-        <DisplayUsername
-          username={user.username}
-          image={user.image}
-          dateJoined={user.dateJoined}
-          email={user.email}
-        />
+        <DisplayUsername user={data} />
       </div>
     </section>
   );
