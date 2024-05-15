@@ -1,7 +1,7 @@
 import { SignIn, SignUp } from "@clerk/nextjs";
 import Link from "next/link";
 
-export default function Page({
+export default function AuthPage({
   params: _params,
   searchParams,
 }: {
