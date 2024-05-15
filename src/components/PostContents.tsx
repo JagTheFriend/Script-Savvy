@@ -19,7 +19,12 @@ function DisplayUsername({
         </div>
       </div>
       <div className="flex flex-col gap-0">
-        <p className="cursor-default text-lg font-medium">{user.username}</p>
+        <Link
+          href={`/profile/${user.id}`}
+          className="cursor-pointer text-lg font-medium"
+        >
+          {user.username}
+        </Link>
         <p className="cursor-default text-sm font-extralight">
           {dateCreated.toLocaleDateString()}
         </p>
@@ -32,14 +37,12 @@ function PostContent(props: { post: Post; user: CustomUserType }) {
   const { post } = props;
 
   return (
-    <div className="w-full rounded-lg border border-gray-200 bg-white shadow-md">
+    <div className="w-full rounded-lg border border-gray-200 bg-white text-gray-900 shadow-md">
       <div className="p-5">
         <DisplayUsername user={props.user} dateCreated={post.createdAt} />
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            {post.title}
-          </h5>
-        </a>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight ">
+          {post.title}
+        </h5>
         <p className="mb-3 font-normal text-gray-700">{post.description}</p>
         <Link
           className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
