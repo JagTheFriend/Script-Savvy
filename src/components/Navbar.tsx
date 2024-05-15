@@ -1,6 +1,7 @@
 "use client";
 
 import { SignInButton, useAuth, UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 
 function UserProfileComponent() {
@@ -20,7 +21,9 @@ function UserProfileComponent() {
   );
 }
 
-function Content() {
+async function Content() {
+  const user = await currentUser();
+
   return (
     <>
       <li>
@@ -29,9 +32,11 @@ function Content() {
       <li>
         <Link href="/search">Search</Link>
       </li>
-      <li>
-        <Link href="/my-posts">My Posts</Link>
-      </li>
+      {user && (
+        <li>
+          <Link href="/my-posts">My Posts</Link>
+        </li>
+      )}
     </>
   );
 }
