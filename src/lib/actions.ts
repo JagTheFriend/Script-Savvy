@@ -63,3 +63,51 @@ export async function createPost(formData: FormData) {
     };
   }
 }
+
+export async function getPosts(limit = 10) {
+  try {
+    const { data: users } = await clerkClient.users.getUserList({
+      limit: 10,
+    });
+
+    const posts = await db.post.findMany({
+      take: limit,
+      orderBy: {
+        createdAt: "desc",
+      },
+      where: {
+        authorId: {
+          in: users.map((user) => user.id),
+        },
+      },
+    });
+
+    const returnData = [];
+
+    for (const post of posts) {
+      const user = users.find((user) => user.id === post.authorId);
+
+      if (!user) continue;
+
+      returnData.push({
+        post: post,
+        author: {
+          username: user.username ?? user.firstName ?? user.lastName ?? "",
+          image: user.imageUrl,
+        },
+      });
+    }
+
+    return {
+      error: false,
+      message: "",
+      data: returnData,
+    };
+  } catch (error) {
+    return {
+      error: true,
+      message: "Something went wrong!",
+      posts: [],
+    };
+  }
+}
