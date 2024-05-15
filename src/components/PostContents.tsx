@@ -1,6 +1,6 @@
 import type { Post } from "@prisma/client";
 import Link from "next/link";
-import { getPosts } from "~/lib/actions";
+import { getPostByUser, getPosts } from "~/lib/actions";
 import type { CustomUserType } from "~/lib/type";
 import DisplayError from "./DisplayError";
 
@@ -56,7 +56,13 @@ function PostContent(props: { post: Post; user: CustomUserType }) {
 }
 
 export default async function PostContents({ userId }: { userId?: string }) {
-  const returnedData = await getPosts(10, userId);
+  let returnedData;
+
+  if (userId) {
+    returnedData = await getPostByUser(userId);
+  } else {
+    returnedData = await getPosts();
+  }
 
   if (returnedData.error) {
     return <DisplayError />;

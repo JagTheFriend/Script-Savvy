@@ -1,7 +1,6 @@
 "use server";
 
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { Post } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { db } from "~/server/db";
 import { getUserDetail } from "./utils";
@@ -44,37 +43,48 @@ export async function createPost(formData: FormData) {
   }
 }
 
-export async function getPosts(limit = 10, userId?: string, title?: string) {
+export async function getPostByQuery(query: string, limit = 10) {}
+
+export async function getPostByUser(userId: string, limit = 10) {
   try {
-    let users = [];
-    let posts: Post[];
+    const user = await clerkClient.users.getUser(userId);
+    const posts = await db.post.findMany({
+      take: limit,
+      orderBy: {
+        createdAt: "desc",
+      },
+      where: {
+        authorId: userId,
+      },
+    });
 
-    if (userId) {
-      const user = await clerkClient.users.getUser(userId);
-      users = [user];
-      posts = await db.post.findMany({
-        take: limit,
-        orderBy: {
-          createdAt: "desc",
-        },
-        where: {
-          authorId: userId,
-        },
-      });
-    } else {
-      posts = await db.post.findMany({
-        take: limit,
-        orderBy: {
-          createdAt: "desc",
-        },
-      });
+    const details = getUserDetail(user);
 
-      const { data } = await clerkClient.users.getUserList({
-        limit: 10,
-        userId: posts.map((post) => post.authorId),
-      });
-      users = data;
-    }
+    return {
+      data: posts.map((post) => ({
+        post,
+        author: details,
+      })),
+    };
+
+  } catch (error) {
+    return { error: true };
+  }
+}
+
+export async function getPosts(limit = 10) {
+  try {
+    const posts = await db.post.findMany({
+      take: limit,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    const { data: users } = await clerkClient.users.getUserList({
+      limit: 10,
+      userId: posts.map((post) => post.authorId),
+    });
 
     const returnData = [];
 
