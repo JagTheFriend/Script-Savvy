@@ -1,8 +1,16 @@
 import { Post } from "@prisma/client";
 import Link from "next/link";
-import { db } from "~/server/db";
+import { toast } from "react-toastify";
+import { getPosts } from "~/lib/actions";
+import { CustomUserType } from "~/lib/type";
 
-function PostContent({ post }: { post: Post }) {
+function DisplayUsername(props: { img: string; username: string }) {
+  return <div></div>;
+}
+
+function PostContent(props: { post: Post; user: CustomUserType }) {
+  const { post } = props;
+
   return (
     <div className="w-full rounded-lg border border-gray-200 bg-white shadow-md">
       <div className="p-5">
@@ -24,12 +32,16 @@ function PostContent({ post }: { post: Post }) {
 }
 
 export default async function PostContents() {
-  const posts = await db.post.findMany({ take: 10 });
+  const returnedData = await getPosts();
+
+  if (returnedData.error) {
+    return toast.error(returnedData.message);
+  }
 
   return (
     <section className="m-1.5 flex flex-col gap-2">
-      {posts.map((post) => (
-        <PostContent key={post.id} post={post} />
+      {returnedData.data?.map((data) => (
+        <PostContent key={data.post.id} post={data.post} user={data.author} />
       ))}
     </section>
   );
