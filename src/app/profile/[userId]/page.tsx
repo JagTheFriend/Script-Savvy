@@ -94,9 +94,9 @@ function DisplayError({ text }: { text: string }) {
 export default async function ProfilePage({
   params,
 }: {
-  params: { id: string };
+  params: { userId: string };
 }) {
-  const { id: userId } = params;
+  const { userId } = params;
   const data = await getUserById(userId);
 
   if (data.error ?? !data.details) {
