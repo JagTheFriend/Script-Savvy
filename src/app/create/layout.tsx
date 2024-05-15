@@ -1,3 +1,4 @@
+import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import Navbar from "~/components/Navbar";
 
 export const metadata = {
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <main className="flex flex-col bg-base-100 text-white">
       <Navbar />
-      {children}
+      <SignedIn>{children}</SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
     </main>
   );
 }
