@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, clerkClient } from "@clerk/nextjs/server";
+import { Post } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { db } from "~/server/db";
 import { getUserDetail } from "./utils";
@@ -43,31 +44,37 @@ export async function createPost(formData: FormData) {
   }
 }
 
-export async function getPosts(limit = 10, userId?: string) {
+export async function getPosts(limit = 10, userId?: string, title?: string) {
   try {
     let users = [];
+    let posts: Post[];
 
     if (userId) {
       const user = await clerkClient.users.getUser(userId);
       users = [user];
+      posts = await db.post.findMany({
+        take: limit,
+        orderBy: {
+          createdAt: "desc",
+        },
+        where: {
+          authorId: userId,
+        },
+      });
     } else {
+      posts = await db.post.findMany({
+        take: limit,
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+
       const { data } = await clerkClient.users.getUserList({
         limit: 10,
+        userId: posts.map((post) => post.authorId),
       });
       users = data;
     }
-
-    const posts = await db.post.findMany({
-      take: limit,
-      orderBy: {
-        createdAt: "desc",
-      },
-      where: {
-        authorId: {
-          in: users.map((user) => user.id),
-        },
-      },
-    });
 
     const returnData = [];
 
