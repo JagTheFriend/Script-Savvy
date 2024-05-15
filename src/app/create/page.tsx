@@ -54,6 +54,7 @@ function Form() {
         placeholder="Enter Title"
         className="input input-bordered w-full lg:max-w-4xl"
         required
+        autoFocus
       />
       <input
         name="description"
