@@ -11,7 +11,8 @@ export default function SearchResult() {
   const [debouncedQuery] = useDebounce(query, 1000);
 
   useEffect(() => {
-    router.push(`/search?${new URLSearchParams({ q: debouncedQuery })}`);
+    const urlParams = new URLSearchParams({ q: debouncedQuery });
+    router.push(`/search?${urlParams.toString()}`);
   }, [debouncedQuery]);
 
   return (
