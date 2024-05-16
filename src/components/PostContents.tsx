@@ -33,7 +33,7 @@ function DisplayUsername({
   );
 }
 
-function PostContent(props: { post: Post; user: CustomUserType }) {
+export function PostContent(props: { post: Post; user: CustomUserType }) {
   const { post } = props;
 
   return (
