@@ -1,6 +1,8 @@
 "use client";
 
 import Placeholder from "@tiptap/extension-placeholder";
+import Underline from "@tiptap/extension-underline";
+
 import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
@@ -12,6 +14,9 @@ function MenuButtons({ editor }: { editor: Editor | null }) {
       <button
         type="button"
         className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+        onClick={() => {
+          editor?.chain().focus().toggleBold().run();
+        }}
       >
         <BoldIcon className="h-4 w-4" />
         Bold
@@ -19,6 +24,9 @@ function MenuButtons({ editor }: { editor: Editor | null }) {
       <button
         type="button"
         className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+        onClick={() => {
+          editor?.chain().focus().toggleItalic().run();
+        }}
       >
         <ItalicIcon className="h-4 w-4" />
         Italic
@@ -26,6 +34,9 @@ function MenuButtons({ editor }: { editor: Editor | null }) {
       <button
         type="button"
         className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+        onClick={() => {
+          editor?.chain().focus().toggleUnderline().run();
+        }}
       >
         <UnderlineIcon className="h-4 w-4" />
         Underline
@@ -42,6 +53,7 @@ export default function TipTapPostContentInput({
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Underline,
       Placeholder.configure({
         // Use a placeholder:
         placeholder: "Content of Post",
