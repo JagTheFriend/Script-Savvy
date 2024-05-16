@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import DisplayError from "~/components/DisplayError";
 import { getPostContent } from "~/lib/actions";
 
