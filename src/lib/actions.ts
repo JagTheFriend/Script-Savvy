@@ -44,6 +44,9 @@ export async function createPost(formData: FormData) {
 }
 
 export async function getPostByQuery(query: string, limit = 10) {
+  if (!query) {
+    return { error: false };
+  }
   try {
     const posts = await db.post.findMany({
       take: limit,
