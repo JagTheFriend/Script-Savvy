@@ -1,12 +1,11 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SearchResult() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
 
   useEffect(() => {
@@ -22,7 +21,6 @@ export default function SearchResult() {
           className="flex flex-col items-center justify-center gap-2"
           onSubmit={(e) => {
             e.preventDefault();
-            setQuery(inputRef.current?.value.trim() ?? "");
           }}
         >
           <label className="input input-bordered flex items-center gap-2">
@@ -32,7 +30,9 @@ export default function SearchResult() {
               className="grow"
               placeholder="Search"
               defaultValue={query}
-              ref={inputRef}
+              onInput={(e) => {
+                setQuery(e.currentTarget.value.trim() ?? "");
+              }}
               required
               autoFocus
             />
