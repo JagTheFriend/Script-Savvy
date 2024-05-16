@@ -34,7 +34,8 @@ function DateJoined({ dateJoined }: { dateJoined: number }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        <title>Date Joined Icon</title>
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
       </svg>
       Joined on {new Date(dateJoined).toLocaleDateString()}
     </div>
@@ -55,8 +56,9 @@ function EmailAddress({ email }: { email: string }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-        <polyline points="22,6 12,13 2,6"></polyline>
+        <title>Email Icon</title>
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
       </svg>
       <Link href={`mailto:${email}`}>{email}</Link>
     </div>
@@ -74,7 +76,7 @@ function ProfileImage({
     <div className="flex flex-row items-center justify-center gap-4">
       <div className="avatar">
         <div className="w-12 rounded-full">
-          <img src={image} alt={"Profile Image"} />
+          <img src={image} alt={`${username}'s profile icon`} />
         </div>
       </div>
       <p className="cursor-default font-bold sm:text-2xl md:text-2xl lg:text-4xl">

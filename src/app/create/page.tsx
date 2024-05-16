@@ -23,6 +23,7 @@ function SubmitButton() {
         className="btn btn-outline btn-warning"
         disabled={pending}
         onClick={() => void router.push("/")}
+        type="button"
       >
         Cancel
       </button>
@@ -54,6 +55,7 @@ function Form() {
         placeholder="Enter Title"
         className="input input-bordered w-full lg:max-w-4xl"
         required
+        // biome-ignore lint/a11y/noAutofocus: <explanation>
         autoFocus
       />
       <input
