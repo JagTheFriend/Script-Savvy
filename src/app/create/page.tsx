@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "react-toastify";
+import PostContentInput from "~/components/PostContentInput";
 import { createPost } from "~/lib/actions";
 
 function SubmitButton() {
@@ -28,20 +29,6 @@ function SubmitButton() {
         Cancel
       </button>
     </div>
-  );
-}
-
-function ContentArea() {
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  return (
-    <textarea
-      name="content"
-      placeholder="Enter Content"
-      className="textarea input-bordered textarea-lg w-full lg:max-w-4xl"
-      ref={textAreaRef}
-      required
-    />
   );
 }
 
@@ -79,7 +66,7 @@ function Form() {
         className="input input-bordered w-full lg:max-w-4xl"
         required
       />
-      <ContentArea />
+      <PostContentInput />
       <SubmitButton />
     </form>
   );
