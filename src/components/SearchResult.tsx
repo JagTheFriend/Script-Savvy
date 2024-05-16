@@ -22,7 +22,7 @@ export default function SearchResult() {
           className="flex flex-col items-center justify-center gap-2"
           onSubmit={(e) => {
             e.preventDefault();
-            setQuery(inputRef.current?.value ?? "");
+            setQuery(inputRef.current?.value.trim() ?? "");
           }}
         >
           <label className="input input-bordered flex items-center gap-2">
@@ -49,7 +49,11 @@ export default function SearchResult() {
               />
             </svg>
           </label>
-          <button type="submit" className="btn btn-ghost btn-outline">
+          <button
+            disabled={query.length === 0}
+            type="submit"
+            className="btn btn-ghost btn-outline"
+          >
             Search
           </button>
         </form>
