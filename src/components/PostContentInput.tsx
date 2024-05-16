@@ -37,5 +37,9 @@ export default function TiptapPostContentInput({
     };
   }, [editor, contentRef]);
 
-  return <EditorContent className="w-full lg:max-w-4xl" editor={editor} />;
+  return (
+    <>
+      <EditorContent className="w-full lg:max-w-4xl" editor={editor} />
+    </>
+  );
 }
