@@ -1,9 +1,8 @@
 import Navbar from "~/components/Navbar";
 
 export const metadata = {
-  title: "Script Savvy",
-  description: "Simple Blog website created using create-t3-app",
-  icons: [{ rel: "icon", url: "/logo.svg" }],
+  title: "View Profile",
+  description: "View profile of user",
 };
 
 export default function RootLayout({

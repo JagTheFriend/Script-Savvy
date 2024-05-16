@@ -1,7 +1,6 @@
 export const metadata = {
   title: "Authentication",
-  description: "login page for Todo app",
-  icons: [{ rel: "icon", url: "/logo.svg" }],
+  description: "login page for Script Savvy",
 };
 
 export default function RootLayout({

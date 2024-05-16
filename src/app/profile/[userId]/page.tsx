@@ -1,8 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import DisplayError from "~/components/DisplayError";
 import PostContents from "~/components/PostContents";
 import { getUserById } from "~/lib/actions";
 import type { CustomUserType } from "~/lib/type";
+
+type Props = {
+  params: { userId: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const data = await getUserById(params.userId);
+
+  if (data.error ?? !data.details) {
+    return { title: "Error" };
+  }
+  return {
+    title: `Viewing profile of ${data.details.username}`,
+    description: `Viewing profile of ${data.details.username}`,
+  };
+}
 
 function DateJoined({ dateJoined }: { dateJoined: number }) {
   return (
@@ -79,11 +96,7 @@ function DisplayUsername({ user }: { user: CustomUserType }) {
   );
 }
 
-export default async function ProfilePage({
-  params,
-}: {
-  params: { userId: string };
-}) {
+export default async function ProfilePage({ params }: Props) {
   const { userId } = params;
   const data = await getUserById(userId);
 

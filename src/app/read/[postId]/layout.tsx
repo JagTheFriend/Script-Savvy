@@ -3,7 +3,6 @@ import Navbar from "~/components/Navbar";
 export const metadata = {
   title: "Script Savvy",
   description: "Read a blog post",
-  icons: [{ rel: "icon", url: "/logo.svg" }],
 };
 
 export default function RootLayout({
