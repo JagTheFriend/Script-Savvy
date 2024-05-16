@@ -1,9 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useFormStatus } from "react-dom";
-import ReactQuill from "react-quill";
 import { toast } from "react-toastify";
 import { createPost } from "~/lib/actions";
 
@@ -33,22 +32,16 @@ function SubmitButton() {
 }
 
 function ContentArea() {
-  const [input, setInput] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
   return (
-    <ReactQuill
-      className="w-full p-0 lg:max-w-4xl"
-      theme="snow"
-      onChange={setInput}
-    >
-      <textarea
-        name="content"
-        placeholder="Enter Content"
-        className="textarea textarea-lg w-full rounded-none"
-        ref={textAreaRef}
-        required
-      />
-    </ReactQuill>
+    <textarea
+      name="content"
+      placeholder="Enter Content"
+      className="textarea input-bordered textarea-lg w-full lg:max-w-4xl"
+      ref={textAreaRef}
+      required
+    />
   );
 }
 

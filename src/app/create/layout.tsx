@@ -1,5 +1,4 @@
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
-import 'react-quill/dist/quill.snow.css';
 import Navbar from "~/components/Navbar";
 
 export const metadata = {
