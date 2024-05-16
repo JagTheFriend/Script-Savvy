@@ -1,8 +1,8 @@
 import Navbar from "~/components/Navbar";
 
 export const metadata = {
-  title: "Script Savvy",
-  description: "Read a blog post",
+  title: "Search blog post",
+  description: "Search blog post",
   icons: [{ rel: "icon", url: "/logo.svg" }],
 };
 
