@@ -32,7 +32,8 @@ export default async function ReadPostPage({ params }: Props) {
         <p className="text-3xl font-bold">{returnedData.post.title}</p>
       </section>
       <section>
-        <p>{returnedData.post.content}</p>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Content is safe to render */}
+        <p dangerouslySetInnerHTML={{ __html: returnedData.post.content }} />
       </section>
     </div>
   );
