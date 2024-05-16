@@ -7,13 +7,17 @@ import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 import { useEffect, type MutableRefObject } from "react";
+import { cn } from "~/lib/utils";
 
 function MenuButtons({ editor }: { editor: Editor | null }) {
   return (
     <div className="flex flex-row justify-center gap-2">
       <button
         type="button"
-        className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+        className={cn(
+          "flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1",
+          editor?.isActive("bold") ? "bg-gray-600" : "",
+        )}
         onClick={() => {
           editor?.chain().focus().toggleBold().run();
         }}
@@ -23,7 +27,10 @@ function MenuButtons({ editor }: { editor: Editor | null }) {
       </button>
       <button
         type="button"
-        className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+        className={cn(
+          "flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1",
+          editor?.isActive("italic") ? "bg-gray-600" : "",
+        )}
         onClick={() => {
           editor?.chain().focus().toggleItalic().run();
         }}
@@ -33,7 +40,10 @@ function MenuButtons({ editor }: { editor: Editor | null }) {
       </button>
       <button
         type="button"
-        className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+        className={cn(
+          "flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1",
+          editor?.isActive("underline") ? "bg-gray-600" : "",
+        )}
         onClick={() => {
           editor?.chain().focus().toggleUnderline().run();
         }}
