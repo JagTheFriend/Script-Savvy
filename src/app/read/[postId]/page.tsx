@@ -1,11 +1,24 @@
+import { Metadata } from "next";
 import DisplayError from "~/components/DisplayError";
 import { getPostContent } from "~/lib/actions";
 
-export default async function ReadPostPage({
-  params,
-}: {
+type Props = {
   params: { postId: string };
-}) {
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const data = await getPostContent(params.postId);
+
+  if (data.error ?? !data.post) {
+    return { title: "Error" };
+  }
+  return {
+    title: `Reading post '${data.post.title}'`,
+    description: `Reading post '${data.post.title}'`,
+  };
+}
+
+export default async function ReadPostPage({ params }: Props) {
   const { postId } = params;
   const returnedData = await getPostContent(postId);
 
