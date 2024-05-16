@@ -1,12 +1,19 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
+  useEffect(() => {
+    if (query) {
+      router.push(`/search?${new URLSearchParams({ q: query })}`);
+    }
+  }, [query]);
 
   return (
     <>
