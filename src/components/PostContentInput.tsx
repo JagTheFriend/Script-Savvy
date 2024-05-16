@@ -14,7 +14,9 @@ const Tiptap = () => {
     },
   });
 
-  return <EditorContent className="w-full lg:max-w-4xl" editor={editor} />;
+  return (
+    <EditorContent className="w-full lg:max-w-4xl" editor={editor} />
+  );
 };
 
 export default Tiptap;
