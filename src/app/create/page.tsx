@@ -55,7 +55,7 @@ function Form() {
         placeholder="Enter Title"
         className="input input-bordered w-full lg:max-w-4xl"
         required
-        // biome-ignore lint/a11y/noAutofocus: <explanation>
+        // biome-ignore lint/a11y/noAutofocus: Autofocus to input field
         autoFocus
       />
       <input

@@ -10,7 +10,7 @@ export default function SearchResult() {
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [debouncedQuery] = useDebounce(query, 1000);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: No need to add router to dependencies
   useEffect(() => {
     const urlParams = new URLSearchParams({ q: debouncedQuery });
     router.push(`/search?${urlParams.toString()}`);
@@ -36,7 +36,7 @@ export default function SearchResult() {
                 setQuery(e.currentTarget.value.trim() ?? "");
               }}
               required
-              // biome-ignore lint/a11y/noAutofocus: <explanation>
+              // biome-ignore lint/a11y/noAutofocus: Autofocus to search input field
               autoFocus
             />
             <svg

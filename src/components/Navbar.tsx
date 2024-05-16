@@ -74,7 +74,7 @@ function NavbarComponent() {
             </svg>
           </div>
           <ul
-            // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: Prebuilt
             tabIndex={0}
             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-300 p-2 shadow"
           >
