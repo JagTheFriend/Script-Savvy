@@ -1,21 +1,22 @@
 "use client";
 
-import DisplayError from "~/components/DisplayError";
-import { getPostByQuery } from "~/lib/actions";
+import { useSearchParams } from "next/navigation";
+import { useRef, useState } from "react";
 
 export default function SearchPage() {
+  const searchParams = useSearchParams();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
   return (
     <>
       <div className="m-5">
         <section className="flex flex-col border-b border-gray-700 pb-4">
           <form
             className="flex flex-col items-center justify-center gap-2"
-            action={async (formData) => {
-              const query = (formData.get("query") as string) ?? "";
-              const data = await getPostByQuery(query);
-              if (data.error) {
-                return <DisplayError />;
-              }
+            onSubmit={(e) => {
+              e.preventDefault();
+              setQuery(inputRef.current?.value ?? "");
             }}
           >
             <label className="input input-bordered flex items-center gap-2">
@@ -24,6 +25,8 @@ export default function SearchPage() {
                 type="text"
                 className="grow"
                 placeholder="Search"
+                defaultValue={query}
+                ref={inputRef}
                 required
                 autoFocus
               />
