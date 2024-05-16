@@ -10,7 +10,7 @@ import { useEffect, type MutableRefObject } from "react";
 
 function MenuButtons({ editor }: { editor: Editor | null }) {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row justify-center gap-2">
       <button
         type="button"
         className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
