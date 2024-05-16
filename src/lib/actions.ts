@@ -79,6 +79,7 @@ export async function getPostByQuery(query: string, limit = 10) {
       });
     }
 
+    revalidatePath("/search");
     return {
       data: returnData,
     };
