@@ -2,17 +2,17 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 export default function SearchResult() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
+  const [debouncedQuery] = useDebounce(query, 1000);
 
   useEffect(() => {
-    if (query) {
-      router.push(`/search?${new URLSearchParams({ q: query })}`);
-    }
-  }, [query]);
+    router.push(`/search?${new URLSearchParams({ q: debouncedQuery })}`);
+  }, [debouncedQuery]);
 
   return (
     <div className="m-5">
@@ -49,13 +49,6 @@ export default function SearchResult() {
               />
             </svg>
           </label>
-          <button
-            disabled={query.length === 0}
-            type="submit"
-            className="btn btn-ghost btn-outline"
-          >
-            Search
-          </button>
         </form>
       </section>
     </div>
