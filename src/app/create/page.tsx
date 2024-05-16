@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useFormStatus } from "react-dom";
+import ReactQuill from "react-quill";
 import { toast } from "react-toastify";
 import { createPost } from "~/lib/actions";
 
@@ -65,12 +66,14 @@ function Form() {
         className="input input-bordered w-full lg:max-w-4xl"
         required
       />
-      <textarea
-        name="content"
-        placeholder="Content"
-        className="textarea textarea-bordered textarea-lg w-full"
-        required
-      />
+      <ReactQuill className="w-full p-0 lg:max-w-4xl" theme="snow">
+        <textarea
+          name="content"
+          placeholder="Enter Content"
+          className="textarea textarea-lg w-full rounded-none"
+          required
+        />
+      </ReactQuill>
       <SubmitButton />
     </form>
   );
