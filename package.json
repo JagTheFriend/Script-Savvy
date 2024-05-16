@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.0.8",
-    "@mdxeditor/editor": "^3.0.7",
     "@prisma/client": "^5.10.2",
     "@t3-oss/env-nextjs": "^0.10.1",
     "class-variance-authority": "^0.7.0",
