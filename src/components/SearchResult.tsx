@@ -10,6 +10,7 @@ export default function SearchResult() {
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [debouncedQuery] = useDebounce(query, 1000);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const urlParams = new URLSearchParams({ q: debouncedQuery });
     router.push(`/search?${urlParams.toString()}`);
@@ -35,6 +36,7 @@ export default function SearchResult() {
                 setQuery(e.currentTarget.value.trim() ?? "");
               }}
               required
+              // biome-ignore lint/a11y/noAutofocus: <explanation>
               autoFocus
             />
             <svg
@@ -43,6 +45,7 @@ export default function SearchResult() {
               fill="currentColor"
               className="h-4 w-4 opacity-70"
             >
+              <title>Search Icon</title>
               <path
                 fillRule="evenodd"
                 d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"

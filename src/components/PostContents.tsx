@@ -15,7 +15,7 @@ function DisplayUsername({
     <div className="flex flex-row items-center gap-2 text-black">
       <div className="avatar">
         <div className="w-8 rounded-full">
-          <img src={user.image} alt={"Profile Image"} />
+          <img src={user.image} alt={`${user.username}'s profile icon`} />
         </div>
       </div>
       <div className="flex flex-col gap-0">
@@ -56,13 +56,7 @@ export function PostContent(props: { post: Post; user: CustomUserType }) {
 }
 
 export default async function PostContents({ userId }: { userId?: string }) {
-  let returnedData;
-
-  if (userId) {
-    returnedData = await getPostByUser(userId);
-  } else {
-    returnedData = await getPosts();
-  }
+  const returnedData = userId ? await getPostByUser(userId) : await getPosts();
 
   if (returnedData.error) {
     return <DisplayError />;

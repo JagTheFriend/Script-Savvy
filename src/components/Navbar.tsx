@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth, UserButton } from "@clerk/nextjs";
+import { UserButton, useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 
 function UserProfileComponent() {
@@ -64,6 +64,7 @@ function NavbarComponent() {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
+              <title>Menu Icon</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -73,6 +74,7 @@ function NavbarComponent() {
             </svg>
           </div>
           <ul
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
             tabIndex={0}
             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-300 p-2 shadow"
           >
