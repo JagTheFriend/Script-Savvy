@@ -78,8 +78,6 @@ export async function getPostByQuery(query: string, limit = 10) {
         author: details,
       });
     }
-
-    revalidatePath("/search");
     return {
       data: returnData,
     };
