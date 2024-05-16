@@ -1,11 +1,40 @@
 "use client";
 
 import Placeholder from "@tiptap/extension-placeholder";
-import { EditorContent, useEditor } from "@tiptap/react";
+import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 import { useEffect, type MutableRefObject } from "react";
 
-export default function TiptapPostContentInput({
+function MenuButtons({ editor }: { editor: Editor | null }) {
+  return (
+    <div className="flex flex-row gap-2">
+      <button
+        type="button"
+        className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+      >
+        <BoldIcon className="h-4 w-4" />
+        Bold
+      </button>
+      <button
+        type="button"
+        className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+      >
+        <ItalicIcon className="h-4 w-4" />
+        Italic
+      </button>
+      <button
+        type="button"
+        className="flex flex-row items-center justify-center gap-2 rounded-lg border px-2 py-1"
+      >
+        <UnderlineIcon className="h-4 w-4" />
+        Underline
+      </button>
+    </div>
+  );
+}
+
+export default function TipTapPostContentInput({
   contentRef,
 }: {
   contentRef: MutableRefObject<{ text: string; html: string }>;
@@ -38,8 +67,9 @@ export default function TiptapPostContentInput({
   }, [editor, contentRef]);
 
   return (
-    <>
-      <EditorContent className="w-full lg:max-w-4xl" editor={editor} />
-    </>
+    <div className="flex w-full flex-col gap-2 lg:max-w-4xl">
+      <MenuButtons editor={editor} />
+      <EditorContent className="" editor={editor} />
+    </div>
   );
 }
