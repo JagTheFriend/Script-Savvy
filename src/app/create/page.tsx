@@ -34,11 +34,17 @@ function SubmitButton() {
 
 function Form() {
   const formRef = useRef<HTMLFormElement>(null);
+  const contentRef = useRef({ text: "", html: "" });
   const router = useRouter();
 
   return (
     <form
       action={async (formData) => {
+        if (contentRef.current.text === "") {
+          return toast.error("Content is required!");
+        }
+        formData.set("content", contentRef.current.html);
+
         const { error, postId } = await createPost(formData);
         if (error) {
           return toast.error("Something went wrong!");
@@ -66,7 +72,7 @@ function Form() {
         className="input input-bordered w-full lg:max-w-4xl"
         required
       />
-      <PostContentInput />
+      <PostContentInput contentRef={contentRef} />
       <SubmitButton />
     </form>
   );
