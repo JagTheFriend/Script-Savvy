@@ -1,7 +1,8 @@
 "use server";
 
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { revalidatePath } from "next/cache";
+import type { Post } from "@prisma/client";
+import { redirect } from "next/navigation";
 import { db } from "~/server/db";
 import { getUserDetail } from "./utils";
 
@@ -27,8 +28,9 @@ export async function createPost(formData: FormData) {
     return { error: true };
   }
 
+  let post: Post;
   try {
-    const post = await db.post.create({
+    post = await db.post.create({
       data: {
         title,
         content,
@@ -36,11 +38,10 @@ export async function createPost(formData: FormData) {
         description,
       },
     });
-    revalidatePath("/", "page");
-    return { postId: post.id };
   } catch (error) {
     return { error: true };
   }
+  redirect(`/read/${post.id}`);
 }
 
 export async function getPostByQuery(query: string, limit = 10) {

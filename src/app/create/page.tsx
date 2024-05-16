@@ -35,7 +35,6 @@ function SubmitButton() {
 function Form() {
   const formRef = useRef<HTMLFormElement>(null);
   const contentRef = useRef({ text: "", html: "" });
-  const router = useRouter();
 
   return (
     <form
@@ -45,13 +44,12 @@ function Form() {
         }
         formData.set("content", contentRef.current.html);
 
-        const { error, postId } = await createPost(formData);
+        const { error } = await createPost(formData);
         if (error) {
           return toast.error("Something went wrong!");
         }
         toast.success("Post created!");
         formRef.current?.reset();
-        void router.push(`/read/${postId}`);
       }}
       ref={formRef}
       className="flex flex-col items-center justify-center gap-4 p-4"
