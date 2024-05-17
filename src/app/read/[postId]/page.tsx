@@ -31,9 +31,12 @@ export default async function ReadPostPage({ params }: Props) {
       <section className="flex flex-col break-words border-b border-gray-700">
         <p className="text-3xl font-bold">{returnedData.post.title}</p>
       </section>
-      <section>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Content is safe to render */}
-        <div dangerouslySetInnerHTML={{ __html: returnedData.post.content }} />
+      <section className="flex flex-col items-center break-words">
+        <article
+          className="prose text-white"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Content is safe to render
+          dangerouslySetInnerHTML={{ __html: returnedData.post.content }}
+        />
       </section>
     </div>
   );

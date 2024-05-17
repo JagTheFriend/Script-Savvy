@@ -74,7 +74,11 @@ const config = {
       },
     },
   },
-  plugins: [daisyui, require("tailwindcss-animate")],
+  plugins: [
+    daisyui,
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+  ],
 
   // daisyUI config (optional - here are the default values)
   daisyui: {
