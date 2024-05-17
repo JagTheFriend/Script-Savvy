@@ -2,27 +2,33 @@
 
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
-import { useEffect, useRef, type MutableRefObject } from "react";
+import { useCallback, type MutableRefObject } from "react";
 
 export default function TipTapPostContentInput({
   contentRef,
 }: {
   contentRef: MutableRefObject<{ text: string; html: string }>;
 }) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const containerRef = useCallback((containerElement: HTMLDivElement) => {
+    if (containerElement == null) return;
 
-  useEffect(() => {
+    // Remove any existing content
+    containerElement.innerHTML = "";
+
     const editor = document.createElement("div");
-    wrapperRef.current?.appendChild(editor);
+    containerElement.appendChild(editor);
 
-    const quill = new Quill(editor, { theme: "snow" });
-
-    return () => {
-      if (wrapperRef.current) wrapperRef.current.innerHTML = "";
-    };
+    const quill = new Quill(editor, {
+      theme: "snow",
+      placeholder: "Enter Content",
+    });
   }, []);
 
   return (
-    <div id="container" ref={wrapperRef} className="w-full lg:max-w-4xl" />
+    <div
+      id="container"
+      ref={containerRef}
+      className="flex min-h-72 w-full flex-col bg-white text-black lg:max-w-4xl"
+    />
   );
 }
