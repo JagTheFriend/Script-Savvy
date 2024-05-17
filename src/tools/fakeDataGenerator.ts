@@ -29,10 +29,10 @@ async function generateFakePosts(count = 20) {
     let content = `<h1>${faker.hacker.phrase()}</h1><br>`;
     content += faker.lorem.paragraphs(4, "<br>");
 
-    content = `<h2>${faker.hacker.phrase()}</h2><br>`;
+    content += `<h2>${faker.hacker.phrase()}</h2><br>`;
     content += faker.lorem.paragraphs(4, "<br>");
 
-    content = `<h3>${faker.hacker.phrase()}</h1><br>`;
+    content += `<h3>${faker.hacker.phrase()}</h1><br>`;
     content += faker.lorem.paragraphs(4, "<br>");
 
     const authorId = DEMO_AUTHORS[
