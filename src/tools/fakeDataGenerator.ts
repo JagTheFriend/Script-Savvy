@@ -24,16 +24,16 @@ async function generateFakePosts(count = 20) {
   // create a for loop which runs count times
   for (let i = 0; i < count; i++) {
     const title = faker.hacker.phrase();
-    const description = faker.lorem.sentence();
+    const description = faker.hacker.phrase();
 
     let content = `<h1>${faker.hacker.phrase()}</h1><br>`;
-    content += faker.lorem.paragraphs(4, "<br>");
+    content += faker.lorem.paragraphs(10, "<br>");
 
     content += `<h2>${faker.hacker.phrase()}</h2><br>`;
-    content += faker.lorem.paragraphs(4, "<br>");
+    content += faker.lorem.paragraphs(10, "<br>");
 
     content += `<h3>${faker.hacker.phrase()}</h1><br>`;
-    content += faker.lorem.paragraphs(4, "<br>");
+    content += faker.lorem.paragraphs(10, "<br>");
 
     const authorId = DEMO_AUTHORS[
       Math.floor(Math.random() * DEMO_AUTHORS.length)
