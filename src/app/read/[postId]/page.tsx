@@ -33,7 +33,7 @@ export default async function ReadPostPage({ params }: Props) {
       </section>
       <section>
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Content is safe to render */}
-        <p dangerouslySetInnerHTML={{ __html: returnedData.post.content }} />
+        <div dangerouslySetInnerHTML={{ __html: returnedData.post.content }} />
       </section>
     </div>
   );
