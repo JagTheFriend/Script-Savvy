@@ -18,7 +18,7 @@ const DEMO_AUTHORS = [
   "user_2gQHWjoFR8BZgBrUmfdymTbtoYC",
 ];
 
-async function generateFakePosts(count = 10) {
+async function generateFakePosts(count = 20) {
   const actions: Promise<Post>[] = [];
 
   // create a for loop which runs count times
