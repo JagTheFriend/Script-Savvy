@@ -33,7 +33,7 @@ export default async function ReadPostPage({ params }: Props) {
       </section>
       <section className="flex flex-col items-center break-words">
         <article
-          className="prose text-white"
+          className="prose-headings:underline prose-a:underline prose-headings:text-white prose-a:text-blue-600 prose text-white"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: Content is safe to render
           dangerouslySetInnerHTML={{ __html: returnedData.post.content }}
         />
