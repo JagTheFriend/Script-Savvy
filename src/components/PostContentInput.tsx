@@ -2,13 +2,15 @@
 
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
-import { useCallback, type MutableRefObject } from "react";
+import { useCallback, useEffect, useState, type MutableRefObject } from "react";
 
 export default function TipTapPostContentInput({
   contentRef,
 }: {
   contentRef: MutableRefObject<{ text: string; html: string }>;
 }) {
+  const [quillInstance, setQuillInstance] = useState<Quill | null>(null);
+
   const containerRef = useCallback((containerElement: HTMLDivElement) => {
     if (containerElement == null) return;
 
@@ -22,7 +24,20 @@ export default function TipTapPostContentInput({
       theme: "snow",
       placeholder: "Enter Content",
     });
+    setQuillInstance(quill);
   }, []);
+
+  useEffect(() => {
+    if (quillInstance == null) return;
+
+    quillInstance.on("text-change", (_delta, _oldDelta, _source) => {
+      contentRef.current.text = quillInstance.root.innerHTML;
+    });
+
+    return () => {
+      quillInstance.off("text-change");
+    };
+  }, [quillInstance, contentRef]);
 
   return (
     <div
