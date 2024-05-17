@@ -52,6 +52,7 @@ async function generateFakePosts(count = 10) {
   }
 
   await Promise.all(actions);
+  console.log("Finished");
 }
 
 generateFakePosts();
