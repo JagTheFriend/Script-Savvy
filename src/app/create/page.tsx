@@ -34,15 +34,15 @@ function SubmitButton() {
 
 function Form() {
   const formRef = useRef<HTMLFormElement>(null);
-  const contentRef = useRef({ text: "", html: "" });
+  const contentRef = useRef("");
 
   return (
     <form
       action={async (formData) => {
-        if (contentRef.current.text === "") {
+        if (contentRef.current === "") {
           return toast.error("Content is required!");
         }
-        formData.set("content", contentRef.current.html);
+        formData.set("content", contentRef.current);
 
         const { error } = await createPost(formData);
         if (error) {

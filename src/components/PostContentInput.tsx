@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState, type MutableRefObject } from "react";
 export default function TipTapPostContentInput({
   contentRef,
 }: {
-  contentRef: MutableRefObject<{ text: string; html: string }>;
+  contentRef: MutableRefObject<string>;
 }) {
   const [quillInstance, setQuillInstance] = useState<Quill | null>(null);
 
@@ -31,7 +31,7 @@ export default function TipTapPostContentInput({
     if (quillInstance == null) return;
 
     quillInstance.on("text-change", (_delta, _oldDelta, _source) => {
-      contentRef.current.text = quillInstance.root.innerHTML;
+      contentRef.current = quillInstance.root.innerHTML.trim();
     });
 
     return () => {
