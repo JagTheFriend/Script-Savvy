@@ -1,5 +1,3 @@
-"use client";
-
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import { useCallback, useEffect, useState, type MutableRefObject } from "react";

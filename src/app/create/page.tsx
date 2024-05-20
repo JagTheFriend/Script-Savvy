@@ -1,11 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "react-toastify";
-import PostContentInput from "~/components/PostContentInput";
 import { createPost } from "~/lib/actions";
+
+const PostContentInput = dynamic(
+  () => import("~/components/PostContentInput"),
+  {
+    ssr: false,
+  },
+);
 
 function SubmitButton() {
   const { pending } = useFormStatus();
