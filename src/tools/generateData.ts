@@ -41,7 +41,7 @@ function generateData() {
 
     const authorId = DEMO_AUTHORS[
       Math.floor(Math.random() * DEMO_AUTHORS.length)
-    ] as string;
+    ]!;
 
     const post: Post = {
       createdAt: new Date(),
@@ -61,8 +61,8 @@ async function main() {
   const data = generateData();
 
   console.log("Generated data");
-  await client.post.createMany({ data });
+  void await client.post.createMany({ data });
   console.log("Saved data");
 }
 
-main();
+void main();
