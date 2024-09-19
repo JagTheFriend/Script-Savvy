@@ -21,3 +21,7 @@ This is a simple blog website built using [T3 Stack](https://create.t3.gg/) and 
 ### Contribution
 
 Feel free to contribute to this project by creating a [pull request](https://github.com/JagTheFriend/Script-Savvy/pulls) or [opening an issue](https://github.com/JagTheFriend/Script-Savvy/issues).
+
+## NOTE
+
+The [website](https://script-savvy.vercel.app/) may not work properly due to usuage limits!
